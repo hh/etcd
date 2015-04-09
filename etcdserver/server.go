@@ -123,10 +123,10 @@ type Server interface {
 
 // EtcdServer is the production implementation of the Server interface
 type EtcdServer struct {
+     	r raftNode
 	cfg       *ServerConfig
 	snapCount uint64
 
-	r raftNode
 
 	w          wait.Wait
 	stop       chan struct{}

@@ -77,6 +77,9 @@ type apply struct {
 }
 
 type raftNode struct {
+        index uint64
+        term  uint64
+        lead  uint64
 	raft.Node
 
 	// a chan to send out apply
@@ -97,10 +100,6 @@ type raftNode struct {
 	// If transport is nil, server will panic.
 	transport rafthttp.Transporter
 
-	// Cache of the latest raft index and raft term the server has seen
-	index uint64
-	term  uint64
-	lead  uint64
 
 	stopped chan struct{}
 	done    chan struct{}
